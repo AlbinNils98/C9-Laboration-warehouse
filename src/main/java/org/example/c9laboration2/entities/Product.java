@@ -1,22 +1,40 @@
 package org.example.c9laboration2.entities;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 
 import java.time.LocalDate;
 
 public class Product {
+
+    @NotNull(message = "Id cannot be null")
     private String id;
+
+    @NotBlank(message = "Product name cannot be blank")
     private String name;
+
+    @NotNull(message = "Category cannot be null")
     private Category category;
+
+    @Min(value = 1, message = "Rating must be at least 1")
+    @Max(value = 10, message = "Rating cannot be more then 10")
     private int rating;
-    private final LocalDate creationDate;
+
+    private LocalDate creationDate;
+
     private LocalDate lastModified;
 
-    public Product(String id, String name, Category category, int rating, LocalDate creationDate, LocalDate lastModified) {
+    public Product(String id, String name, Category category, int rating) {
         setId(id);
         setName(name);
         setCategory(category);
         setRating(rating);
-        this.creationDate = creationDate;
-        setLastModified(lastModified);
+        this.creationDate = LocalDate.now();
+        setLastModified(LocalDate.now());
+    }
+
+    public Product(){
     }
 
     public String getId() {

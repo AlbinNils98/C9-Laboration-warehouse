@@ -6,11 +6,12 @@ import org.example.c9laboration2.entities.ProductRecord;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 import java.util.function.Function;
 
 public class Warehouse {
-  private final List<Product> productList = new ArrayList<>(); //Mutable list
+  private final List<Product> productList = new CopyOnWriteArrayList<>(); //Mutable list
 
   public void addProduct(Product product) {
     if (product.getName() == null || product.getName().isEmpty()) {
@@ -71,13 +72,11 @@ public class Warehouse {
   }
 
   public List<ProductRecord> getProductsByCategory(Category category) {
-    return ifNothingFoundInFilteredList(
+    return
             getProductList().stream()
                     .filter(p -> p.category().equals(category))
                     .sorted(Comparator.comparing(ProductRecord::name))
-                    .toList(),
-            "category", category.toString()
-    );
+                    .toList();
   }
 
   public List<ProductRecord> getProductsById(String id) {
