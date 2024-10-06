@@ -5,7 +5,7 @@ import org.example.c9laboration2.entities.Category;
 import org.example.c9laboration2.entities.Product;
 import org.example.c9laboration2.entities.ProductRecord;
 
-import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import static org.example.c9laboration2.entities.PopulateWarehouse.populateWarehouse;
@@ -23,28 +23,25 @@ public class WarehouseService {
     warehouse.addProduct(product);
   }
 
-  public List<ProductRecord> getAllProducts() {
-    return warehouse.getProductList();
-  }
-
-  public List<ProductRecord> getProductsByPage(String productId, String pageSize) {
+  public List<ProductRecord> getPaginatedProductList(Long productId, Long pageSize) {
     List<ProductRecord> productList = warehouse.getProductList();
-    int index = productList.indexOf(getProductById(productId));
-    int size;
+    if (!(productId > productList.size())) {
+      int index = productList.stream()
+          .filter(p -> p.id().equals(String.valueOf(productId)))
+          .mapToInt(productList::indexOf)
+          .sum();
+      int size = pageSize.intValue();
 
-    try {
-      size = Integer.parseInt(pageSize);
-    } catch (NumberFormatException e) {
-      return List.of();
-    }
-    try {
-      if (size > productList.size()) {
-          size = productList.size();
+      try {
+        if (size > productList.size()) {
+          size = productList.size() - index;
+        }
+        return productList.subList(index, (index + size));
+      }catch (IndexOutOfBoundsException e){
+        return productList;
       }
-      return productList.subList(index, (index + size));
-    }catch (IndexOutOfBoundsException e){
-      return List.of();
     }
+    return productList;
   }
 
   public ProductRecord getProductById(String id) {
@@ -60,5 +57,7 @@ public class WarehouseService {
     warehouse.modifyProduct(id, typeOfChange, change);
   }
 
-  // You can add other methods here, like pagination, filtering, etc.
+  public int getCount(){
+    return warehouse.getProductList().size();
+  }
 }

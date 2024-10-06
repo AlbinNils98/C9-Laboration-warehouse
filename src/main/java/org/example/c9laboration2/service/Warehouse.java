@@ -17,6 +17,10 @@ public class Warehouse {
     if (product.getName() == null || product.getName().isEmpty()) {
       throw new IllegalArgumentException("Product name cannot be empty");
     }
+    // Set the id dynamically based on the current size of the list
+    String Id = String.valueOf(productList.size() + 1);
+    product.setId(Id);
+
     productList.add(product);
   }
 

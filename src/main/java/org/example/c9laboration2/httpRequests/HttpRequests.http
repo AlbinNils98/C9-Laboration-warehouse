@@ -1,0 +1,12 @@
+### GET request to example server
+GET http://localhost:8080/my-web-app/api/warehouse/products/category/tools
+
+###POST
+POST http://localhost:8080/my-web-app/api/warehouse/products
+Content-Type: application/json
+
+{
+  "category": "ELECTRONICS",
+  "name": "New Product",
+  "rating": 0
+}
