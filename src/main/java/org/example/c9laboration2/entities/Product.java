@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 public class Product {
 
-    @NotNull(message = "Id cannot be null")
     private String id;
 
     @NotBlank(message = "Product name cannot be blank")
@@ -25,8 +24,7 @@ public class Product {
 
     private LocalDate lastModified;
 
-    public Product(String id, String name, Category category, int rating) {
-        setId(id);
+    public Product(String name, Category category, int rating) {
         setName(name);
         setCategory(category);
         setRating(rating);
