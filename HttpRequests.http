@@ -1,0 +1,24 @@
+### GET all products
+GET http://localhost:8080/my-web-app/api/warehouse/products
+
+### GET paginated products
+GET http://localhost:8080/my-web-app/api/warehouse/products?productId=1&pageSize=
+
+### GET product by id
+GET http://localhost:8080/my-web-app/api/warehouse/products/1
+
+### Get category
+GET http://localhost:8080/my-web-app/api/warehouse/products/category/heal
+
+###POST
+POST http://localhost:8080/my-web-app/api/warehouse/populate
+
+###POST
+POST http://localhost:8080/my-web-app/api/warehouse/products
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "category": "ELECTRONICS",
+  "rating": 0
+}

@@ -1,4 +1,4 @@
-package org.example.c9laboration2;
+package org.example.c9laboration2.validate;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

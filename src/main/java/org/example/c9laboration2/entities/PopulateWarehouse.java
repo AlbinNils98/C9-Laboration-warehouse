@@ -1,9 +1,5 @@
 package org.example.c9laboration2.entities;
 
-import org.example.c9laboration2.service.Warehouse;
-
-import java.time.LocalDate;
-
 public class
 PopulateWarehouse {
 
