@@ -38,5 +38,4 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          target: final
           tags: ${{ vars.DOCKER_USERNAME }}/c9-lab-3:latest
