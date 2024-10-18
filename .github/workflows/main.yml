@@ -18,8 +18,14 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
 
-      - name: Run Maven tests
-        run: mvn clean test   
+      - name: Validate dependencies
+        run: mvn clean
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Check Maven Test Results
+        run: cat target/surefire-reports/*.txt
 
       - name: Build with Maven
         run: mvn package
