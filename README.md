@@ -1,4 +1,4 @@
-# C9 Laboration 2
+# C9 Laboration Warehouse
 
 Here’s a detailed documentation of the REST endpoints in this API, describing the HTTP methods, paths, parameters, and expected responses:
 
