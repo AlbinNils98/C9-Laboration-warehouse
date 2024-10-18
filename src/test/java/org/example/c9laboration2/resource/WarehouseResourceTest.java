@@ -92,7 +92,8 @@ public class WarehouseResourceTest {
 
       JSONArray expectedJSON = new JSONArray(expected);
       JSONArray actualJSON = new JSONArray(jsonBody);
-      JSONAssert.assertEquals(expectedJSON, actualJSON, JSONCompareMode.LENIENT);
+      //JSONAssert.assertEquals(expectedJSON, actualJSON, JSONCompareMode.LENIENT);
+      assertThat("").contains("2");
     }
 
     @Test
