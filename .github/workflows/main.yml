@@ -24,6 +24,12 @@ jobs:
       - name: Build with Maven
         run: mvn package
 
+      - name: List files in current directory
+        run: ls -l
+        
+      - name: List files in target directory
+        run: ls -l target
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -36,6 +42,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKER_USERNAME }}/c9-lab-3:latest
