@@ -28,16 +28,16 @@ jobs:
           cache: 'maven'
 
       - name: Validate dependencies
-        run: mvn clean
+        run: mvn -B clean
 
       - name: Run tests
-        run: mvn test
+        run: mvn -B test
 
       - name: Check Maven Test Results
         run: cat target/surefire-reports/*.txt
 
       - name: Build with Maven
-        run: mvn package
+        run: mvn -B package
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
