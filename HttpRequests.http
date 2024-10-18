@@ -20,5 +20,5 @@ Content-Type: application/json
 {
   "name": "New Product",
   "category": "ELECTRONICS",
-  "rating": 3
+  "rating": 4
 }
